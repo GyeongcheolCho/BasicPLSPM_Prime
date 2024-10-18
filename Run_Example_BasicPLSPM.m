@@ -40,7 +40,8 @@ Min_limit = 10^(-6);
 Flag_Parallel = false;
 modetype=zeros(1,6); % 1 = reflective, 2 = formative
 scheme=3; %  1 = centroid, 2 = factorial, 3 = path weighting
-[INI,TABLE,ETC]=BasicPLSPM(Data{:,:}, W0, B0, modetype,scheme,N_Boot,Max_iter,Min_limit,Flag_Parallel);
+ind_sign = [1,4,7,9,12,13];
+[INI,TABLE,ETC]=BasicPLSPM(Data{:,:}, W0, B0, modetype,scheme,ind_sign,N_Boot,Max_iter,Min_limit,Flag_Parallel);
 INI
 INI.Converge
 INI.iter

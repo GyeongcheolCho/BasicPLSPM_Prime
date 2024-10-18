@@ -1,4 +1,4 @@
-function [INI,TABLE,ETC] = BasicPLSPM(z0, W0, B0, modetype,scheme,N_Boot,Max_iter,Min_limit,Flag_Parallel)
+function [INI,TABLE,ETC] = BasicPLSPM(z0, W0, B0, modetype,scheme,ind_sign,N_Boot,Max_iter,Min_limit,Flag_Parallel)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BasicGSCA() - MATLAB function to perform a basic version of Partial     %
 %               Least Sqaures Path Modeling  (PLSPM).                     %
@@ -12,6 +12,8 @@ function [INI,TABLE,ETC] = BasicPLSPM(z0, W0, B0, modetype,scheme,N_Boot,Max_ite
 %              variable (1 = mode A, 2 = mode B)                          %
 %   scheme = an integer indicating the scheme for updating inner weights  % 
 %              (1 = centroid, 2 = factorial, 3 = path weighting)          %
+%   ind_sign = a vector of length P representing dominant indicator of    %
+%              each latent variable                                       %
 %   N_Boot = Integer representing the number of bootstrap samples for     %
 %            calculating standard errors (SE) and 95% confidence          %
 %            intervals (CI)                                               %
@@ -146,7 +148,7 @@ INI.Converge=Converge;
 INI.W = est_W;
 INI.C = est_C;
 INI.B = est_B;
-INI.CVscore = Gamma;
+INI.CVscore = Gamma*sqrt(N);
 
 if N_Boot<100
    TABLE.W=[est_W(W0),NaN(Nw,5)];

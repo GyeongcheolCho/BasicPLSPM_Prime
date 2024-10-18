@@ -1,7 +1,5 @@
 # BasicPLSPM_Prime
 
-## Version 1.0.0
-
 ### Author:
 Heungsun Hwang and Gyeongcheol Cho
 
@@ -11,6 +9,7 @@ Heungsun Hwang and Gyeongcheol Cho
 ## Features:
 - Estimate GSCA model parameters and calculate their standard errors (SE) along with 95% confidence intervals (CI).
 - Enable parallel computing for bootstrap sampling.
+- Allow users to specify a sign-fixing indicator for each component.
 
 ## Installation:
 To use this package in MATLAB:
